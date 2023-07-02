@@ -1,0 +1,48 @@
+﻿@page
+@model CoreApp.Pages.Motos.IndexModel
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>Motorcycle List</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Moto[0].MakeModel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Moto[0].Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Moto[0].CC)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Moto) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MakeModel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CC)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.MotoId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.MotoId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.MotoId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
